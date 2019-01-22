@@ -17,7 +17,7 @@ int main()
 	fibozero[2] = 1;
 	fiboone[2] = 1;
 
-	for (int x = 3; x < 40; x++)
+	for (int x = 3; x < 41; x++)
 	{
 		fibozero[x] = fibozero[x - 1] + fibozero[x - 2];
 		fiboone[x] = fiboone[x - 1] + fiboone[x - 2];
