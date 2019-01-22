@@ -1,0 +1,37 @@
+#include <iostream>
+#include <stdio.h>
+using namespace std;
+
+int main()
+{
+	int T;
+	cin >> T;
+
+	int fibozero[40];
+	int fiboone[40];
+
+	fibozero[0] = 1;
+	fiboone[0] = 0;
+	fibozero[1] = 0;
+	fiboone[1] = 1;
+	fibozero[2] = 1;
+	fiboone[2] = 1;
+
+	for (int x = 3; x < 40; x++)
+	{
+		fibozero[x] = fibozero[x - 1] + fibozero[x - 2];
+		fiboone[x] = fiboone[x - 1] + fiboone[x - 2];
+	}
+	
+
+
+	int *N = new int[T];
+	
+	for (int x = 0; x < T; x++)
+	{
+		cin >> N[x];
+		cout << fibozero[N[x]] << " " << fiboone[N[x]];
+	}
+	   	  
+	return 0;
+}
