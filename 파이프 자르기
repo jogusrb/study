@@ -1,0 +1,71 @@
+#include <iostream>
+#include <stdio.h>
+#include <algorithm>
+using namespace std;
+int main()
+{
+	int M, N;
+	cin >> M;
+	int pipeM[50];
+	int pipeN[1023];
+	int avalue = 0;
+	int bvalue = 0;
+	int tmp;
+
+	for (int i = 0; i < M; i++)
+	{
+		cin >> pipeM[i];
+	}
+
+	cin >> N;
+
+	for (int i = 0; i < N; i++)
+	{
+		cin >> pipeN[i];
+	}
+
+	sort(pipeM, pipeM + M);
+	sort(pipeN, pipeN + N);
+
+	for (int i = 0; i < N; i++)
+	{
+		tmp = 0;
+		for (int j = 0 + avalue; j < M; j++)
+		{
+			tmp += pipeN[j];
+			if (pipeM[i] >= tmp)
+			{
+				avalue += 1;
+			}
+			else
+				break;
+		}
+	}
+
+	sort(pipeM, pipeM + M);
+
+	for (int i = 0; i < N; i++)
+	{
+		tmp = 0;
+		for (int j = 0 + bvalue; j < M; j++)
+		{
+			tmp += pipeN[j];
+			if (pipeM[i] >= tmp)
+			{
+				bvalue += 1;
+			}
+			else
+				break;
+		}
+	}
+	
+	if (avalue > bvalue)
+		cout << avalue;
+	else
+		cout << bvalue;
+
+
+
+
+	return 0;
+}
