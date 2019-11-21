@@ -1,0 +1,63 @@
+#include <iostream>
+#include <math.h>
+#include <algorithm>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+int l, c;
+int current;
+char num[16];
+
+void dfs(int current, int mo, int ja, string a)
+{
+	if (a.size() == l)
+	{
+		if (mo >= 1 && ja >= 2)
+			cout << a << endl;
+
+		return;
+	}
+
+	if (current == c)
+		return;
+
+	string r;
+
+	if (num[current] == 'a' || num[current] == 'i' || num[current] == 'u' || num[current] == 'e' || num[current] == 'o')
+	{
+		mo++;
+		r = a + num[current];
+		dfs(current + 1, mo, ja, r);
+		mo--;
+		dfs(current + 1, mo, ja, a);
+	}
+	else
+	{
+		ja++;
+		r = a + num[current];
+		dfs(current + 1, mo, ja, r);
+
+		ja--;
+		dfs(current + 1, mo, ja, a);
+	}
+	
+}
+
+int main()
+{
+
+	cin >> l >> c;
+
+	for (int i = 0; i < c; i++)
+	{
+		cin >> num[i];
+	}
+	
+	sort(num, num + c);
+	dfs(0, 0, 0, "");
+
+
+	return 0;
+}
